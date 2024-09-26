@@ -8,7 +8,7 @@ class Parser:
 
     def kv_search(self, key, value=r'(\S+)', sep=':', stop_at='', fmt_fn=None, flags=None, v_type=lambda v: v):
         key = re.escape(key)
-        pattern = rf'({key})\s*{sep}\s*{value}{stop_at}'
+        pattern = rf'({key})\s*?{sep}\s*?{value}{stop_at}'
 
         if fmt_fn is None:
             fmt_fn = lambda m: (m.group(1), v_type(m.group(2)))
