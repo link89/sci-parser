@@ -6,12 +6,14 @@ class Parser:
         self._match_fns = []
         self._default_flags = flags
 
-    def kv_search(self, key, value=r'(\S+)', sep=':', stop_at='', fmt_fn=None, flags=None, v_type=lambda v: v):
+    def kv_search(self, key, value=r'(\S+)', sep=':', stop_at='', fmt_fn=None, flags=None, v_type=lambda v: v, k_name=None):
+        if k_name is None:
+            k_name = key
         key = re.escape(key)
-        pattern = rf'({key})\s*?{sep}\s*?{value}{stop_at}'
+        pattern = rf'{key}\s*?{sep}\s*?{value}{stop_at}'
 
         if fmt_fn is None:
-            fmt_fn = lambda m: (m.group(1), v_type(m.group(2)))
+            fmt_fn = lambda m: (k_name, v_type(m.group(1)))
         return self.re_search(pattern, fmt_fn, flags)
         
     def re_search(self, pattern, fmt_fn=None, flags=None):
