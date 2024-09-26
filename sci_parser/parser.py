@@ -2,21 +2,19 @@ import re
 
 class Parser:
 
-    def __init__(self, fmt_fn=None, flags=0):
+    def __init__(self, flags=0):
         self._match_fns = []
-        self._default_fmt_fn = fmt_fn
         self._default_flags = flags
 
-    def kv_search(self, key, value=r'(\S+)', sep=':', endwith='', fmt_fn=None, flags=None):
+    def kv_search(self, key, value=r'(\S+)', sep=':', stop_at='', fmt_fn=None, flags=None, v_type=lambda v: v):
         key = re.escape(key)
-        pattern = rf'\s*({key})\s*{sep}\s*{value}{endwith}'
-        if fmt_fn is None and self._default_fmt_fn is None:
-            fmt_fn = lambda m: m.groups()
+        pattern = rf'({key})\s*{sep}\s*{value}{stop_at}'
+
+        if fmt_fn is None:
+            fmt_fn = lambda m: (m.group(1), v_type(m.group(2)))
         return self.re_search(pattern, fmt_fn, flags)
         
     def re_search(self, pattern, fmt_fn=None, flags=None):
-        if fmt_fn is None:
-            fmt_fn = self._default_fmt_fn
         if flags is None:
             flags = self._default_flags
         def match_fn(text):
