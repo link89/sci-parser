@@ -1,19 +1,20 @@
 import unittest
 from pathlib import Path
-import re
+from pprint import pprint
 
 from sci_parser.parser import Parser
 from . import DATA_DIR
 
 
 class TestParser(unittest.TestCase):
-    
+
+
     def test_parser(self):
+
         with open(Path(DATA_DIR) / 'multiwfn-01.txt') as fp:
             text = fp.read()
-        parser = Parser()
-        (
-            parser
+            parser = (
+                Parser()
                 .kv_search('Total/Alpha/Beta electrons', v_type=float)
                 .kv_search('Net charge', v_type=float)
                 .kv_search('Expected multiplicity', v_type=int)
@@ -25,6 +26,8 @@ class TestParser(unittest.TestCase):
                 .kv_search('Formula')
                 .kv_search('Total atoms', v_type=int)
                 .kv_search('Molecule weight', v_type=float)
-        )
-        result = list(parser.parse(text))
-        print(result)
+                .kv_search('Atom list', multiline=True, stop_at='Note')
+                .kv_search('Molecular planarity parameter (MPP)', value=r'(.*)$', sep='is')
+            )
+        result = list(parser.parses(text))
+        pprint(result)
