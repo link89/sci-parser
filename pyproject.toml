@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sci-parser"
-version = "0.1.0"
+version = "0.1.1"
 description = "A parser design for extract data from the unstructured output of scientific software."
 authors = ["weihong.xu <xuweihong.cn@gmail.com>"]
 readme = "README.md"
