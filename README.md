@@ -1,5 +1,9 @@
 # Sci Parser
 
+[![PyPI version](https://badge.fury.io/py/sci-parser.svg)](https://badge.fury.io/py/sci-parser)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/sci-parser)](https://pypi.org/project/sci-parser/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/sci-parser)](https://pypi.org/project/sci-parser/)
+
 A parser design for extract data from the unstructured output of scientific software.
 
 ## Installation
