@@ -2,16 +2,18 @@ import re
 
 class Parser:
 
-    def __init__(self, flags=re.MULTILINE):
+    def __init__(self, flags=re.MULTILINE, sep=':'):
         """
         Define a parser object with a set of regular expressions to match and parse text.
 
         :param flags: flags to pass to re.search, re.match, etc.
+        :param sep: the default separator for kv_search
         """
         self._match_fns = []
         self._default_flags = flags
+        self._default_sep = sep
 
-    def kv_search(self, key, value=None, sep=':', stop_at=None, multiline=False,
+    def kv_search(self, key, value=None, sep=None, stop_at=None, multiline=False,
                   fmt_fn=None, flags=None, v_type=lambda v: v, k_name=None):
         """
         Extract a key-value pair from text.
@@ -23,7 +25,7 @@ class Parser:
         you can define your own regular expression to match the value,
         for example, if you want to match until the end of the line, then you can use r'(.*)$'
 
-        :param sep: the separator between the key and value
+        :param sep: the separator (regular expression) between the key and value
 
         :param stop_at: the text to stop at
         if multiline is True, it will stop at empty line or end of the text by default
@@ -41,6 +43,9 @@ class Parser:
         if k_name is None:
             k_name = key
         key = re.escape(key)
+
+        if sep is None:
+            sep = self._default_sep
 
         if value is None:
             value = r'(.*?)' if multiline else r'(\S+)'
