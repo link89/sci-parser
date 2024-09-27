@@ -9,7 +9,7 @@ readme = "README.md"
 Repository = "https://github.com/link89/sci-parser"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.8"
 
 
 [build-system]
