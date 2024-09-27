@@ -11,6 +11,9 @@ pip install sci-parser
 ## Examples
 
 ### Parse the output of Multiwfn
+
+Sample: [multiwfn-01.txt](tests/data/multiwfn-01.txt)
+
 ```python
 from sci_parser.parser import Parser
 from pprint import pprint
