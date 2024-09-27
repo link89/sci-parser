@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "sci-parser"
 version = "0.1.0.dev0"
-description = ""
+description = "A parser design for extract data from the unstructured output of scientific software."
 authors = ["weihong.xu <xuweihong.cn@gmail.com>"]
 readme = "README.md"
+url = "https://github.com/link89/sci-parser"
 
 [tool.poetry.dependencies]
 python = "^3.12"

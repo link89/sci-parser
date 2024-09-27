@@ -30,4 +30,4 @@ class TestParser(unittest.TestCase):
                 .kv_search('Molecular planarity parameter (MPP)', value=r'(.*)$', sep='is')
             )
         result = list(parser.parses(text))
-        pprint(result)
+        pprint(result, width=120)
