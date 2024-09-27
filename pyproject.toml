@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "A parser design for extract data from the unstructured output of scientific software."
 authors = ["weihong.xu <xuweihong.cn@gmail.com>"]
 readme = "README.md"
-url = "https://github.com/link89/sci-parser"
+
+[project.urls]
+Repository = "https://github.com/link89/sci-parser"
 
 [tool.poetry.dependencies]
 python = "^3.12"
