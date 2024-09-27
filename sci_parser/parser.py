@@ -19,7 +19,7 @@ class Parser:
         :param key: the key to search for, as a string literal
 
         :param value: the value to search for, as a regular expression,
-        the default is r'(.*?)' if multiline is True, otherwise r'(\w)' is usedd to match a single word,
+        the default is r'(.*?)' if multiline is True, otherwise r'(\S+)' is usedd to match a single word,
         you can define your own regular expression to match the value,
         for example, if you want to match until the end of the line, then you can use r'(.*)$'
 
@@ -43,7 +43,7 @@ class Parser:
         key = re.escape(key)
 
         if value is None:
-            value = r'(.*?)' if multiline else r'(\w)'
+            value = r'(.*?)' if multiline else r'(\S+)'
 
         if stop_at is None:
             stop_at = r'(?:\n\s*?\n|\Z|\n\r\s*?\n\r)' if multiline else ''

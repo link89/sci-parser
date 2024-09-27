@@ -23,7 +23,7 @@ class TestParser(unittest.TestCase):
                 .kv_search('GTFs', v_type=int)
                 .kv_search('Total energy', v_type=float)
                 .kv_search('Virial ratio', v_type=float)
-                .kv_search('Formula')
+                .kv_search('Formula', value=r'(.*?)  ')
                 .kv_search('Total atoms', v_type=int)
                 .kv_search('Molecule weight', v_type=float)
                 .kv_search('Atom list', multiline=True, stop_at='Note')

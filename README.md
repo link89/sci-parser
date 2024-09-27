@@ -32,7 +32,7 @@ parser = (
     .kv_search('GTFs', v_type=int)
     .kv_search('Total energy', v_type=float)
     .kv_search('Virial ratio', v_type=float)
-    .kv_search('Formula')
+    .kv_search('Formula', value=r'(.*?)  ')
     .kv_search('Total atoms', v_type=int)
     .kv_search('Molecule weight', v_type=float)
     .kv_search('Atom list', multiline=True, stop_at='Note')
@@ -48,14 +48,17 @@ pprint(result, width=120)
 The output of the above code will be like the below
 
 ```text
- [('Total/Alpha/Beta electrons', 1.0),
+[('Total/Alpha/Beta electrons', 112.0),
  ('Net charge', 0.0),
  ('Expected multiplicity', 1),
- ('GTFs', 5),
- ('Virial ratio', 2.0),
- ('Formula', 'H'),
- ('Total atoms', 2),
- ('Molecule weight', 2.0),
+ ('Atoms', 25),
+ ('Basis functions', 293),
+ ('GTFs', 517),
+ ('Total energy', -992.117436714606),
+ ('Virial ratio', 2.00276853),
+ ('Formula', 'H11 C9 O4 P1'),
+ ('Total atoms', 25),
+ ('Molecule weight', 214.15535),
  ('Atom list',
   '1(P ) --> Charge: 15.000000  x,y,z(Bohr):   0.178686   1.913277   0.237251\n'
   '    2(O ) --> Charge:  8.000000  x,y,z(Bohr):  -8.152243  -2.339458   1.431278\n'
